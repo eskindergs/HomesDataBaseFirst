@@ -1,7 +1,6 @@
 ﻿using System.Configuration;
 
-
-namespace CodedHomes.Web
+namespace FinalLayoutDesign
 {
     public class Config
     {
