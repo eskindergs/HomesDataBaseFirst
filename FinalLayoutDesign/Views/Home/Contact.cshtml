@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+<article>
+      <div class="row-fluid">
+          <div class="span5 mobile-push-down">
+            <div class="span10">
+                <div >
+                    <img data-bind="attr: { src: model.imageUrl }" class="fancy"  style ="height:200px; width:300px; "  />
+                </div>
+                <button id="upload-button" data-bind="click: showImageUpload" class="btn btn-mini push-down">
+                        <i class="icon-upload"></i> Upload Image
+                </button>
+                <div id="upload-form-container" class="none alert alert-success push-down">
+                    <form id="upload-form" action="/homes/uploadimage" method="POST" enctype="multipart/form-data">
+                        <button class="btn btn-mini pull-right" data-bind="click: hideImageUpload">x</button>
+                        <input id="image-upload" type="file" name="image" />
+                    </form>
+                </div>
+            </div>
+           </div>
+         @* <div id="img-fail-msg-container" 
+            class="alert alert-error alert-block push-down">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h4>Error</h4>
+            <p>Oops, something bad happened! 
+                This is what the server has to say about it: </p>
+            <p data-bind="text: errorMessage"></p>
+        </div>*@
+      </div>
+    </article>
+<aside>
+         <form id="home-data-form">
+        <div class="span5 mobile-push-right">
+            <div class="row-fluid">
+                <div class="span11">
+                    <input id="streetAddress" name="streetAddress" 
+                        data-bind="value: model.streetAddress" 
+                        type="text" class="full" autofocus
+                        data-role="validate"
+                        title="Street Address"
+                        data-content="The Street Address is required."
+                        placeholder="street address" required />
+                    <br />
+
+                    <input id="streeAddress2" name="city" 
+                        data-bind="value: model.streetAddress2" 
+                        type="text" class="full" 
+                        placeholder="suite, apt. #, etc." /><br />
+
+                    <input id="city" name="city" data-bind="value: model.city" 
+                        title="City"
+                        data-role="validate"
+                        data-content="City is required."
+                        type="text" class="small" 
+                        placeholder="city" required  style="width:80px" />
+
+                    <input id="zipCode" name="zipCode" 
+                        data-bind="value: model.zipCode" 
+                        title="Zip Code"
+                        data-role="validate"
+                        data-content="Zip Code required."
+                        type="number" class="no-spin small push-right" 
+                        placeholder="zip code" style="width:120px" required />
+                </div>
+            </div>
+
+             <hr />
+
+             <div class="row-fluid stats">
+                <div class="span3"><label for="bedrooms">Price</label></div>
+                <div class="span6"><input data-bind="value: model.price" 
+                    title="Price"
+                    data-role="validate"
+                    data-content="Price is required."
+                    id="price" name="price"
+                    type="number" class="no-spin small" required /></div>
+            </div>
+
+            <div class="row-fluid stats">
+                <div class="span3"><label for="bedrooms">Bedrooms</label></div>
+                <div class="span6"><input data-bind="value: model.bedrooms" 
+                    id="bedrooms" name="bedrooms"
+                    title="Bedrooms"
+                    data-role="validate"
+                    data-content="The number of bedrooms is required."
+                    type="number" class="no-spin small" required /></div>
+            </div>
+
+            <div class="row-fluid stats">
+                <div class="span3">
+                    <label for="bathrooms">Bathrooms</label></div>
+                <div class="span6"><input data-bind="value: model.bathrooms"
+                    id="bathrooms" name="bathrooms" 
+                    title="Bathrooms"
+                    data-role="validate"
+                    data-content="The number of bathrooms is required."
+                    type="number" class="no-spin small" required /></div>
+            </div>
+
+            <div class="row-fluid stats">
+                <div class="span3">
+                    <label for="square-feet">Square Feet</label></div>
+                <div class="span6"><input 
+                    id="square-feet" name="square-feet" 
+                    data-bind="value: model.squareFeet"
+                    title="Square Feet"
+                    data-role="validate"
+                    data-content="The square feet of the home is required."
+                    type="number" class="no-spin small" required /></div>
+            </div>
+
+          <hr />
+
+             <div class="row-fluid">
+                <div class="span11">
+                    <label for="description">Description</label>
+                    <textarea data-bind="value: model.description" 
+                        id="description" name="description"
+                        class="full" required
+                        title="Description"
+                        data-role="validate"
+                        data-content="A description is required."></textarea>
+                </div>
+            </div>
+
+            <hr />
+
+           @*  @if (Model.CanEdit)
+            {
+            *@<div class="row-fluid">
+                <div class="span11">
+                    <div id="progress-bar" 
+                        class="progress progress-striped active fade-anim none">
+                        <div class="bar" style="width: 100%;"></div>
+                    </div>
+                    <div id="command-buttons" class="pull-right">
+                      @*  @if (Model.CanDelete && !Model.IsNew)
+                        {*@
+                        <a href="#" id="delete-link" class="cmd" 
+                                data-bind="click: requestDelConfirm" 
+                                tabindex="-1">Delete</a>
+                        @*}*@
+                        <button data-bind="click: save" type="button" 
+                            class="btn btn-primary btn-large push-right cmd">
+                            Save</button>
+                    </div>
+                </div>
+            </div>   
+         @*   }*@
+            </div>
+             </form>
+    </aside>
