@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CodedHomes.Models
 {
-    public class Home //:IAuditInfo
+    public class Home : IAuditInfo
     {
 
         
