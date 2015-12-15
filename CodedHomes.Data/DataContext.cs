@@ -17,6 +17,10 @@ namespace CodedHomes.Data
         public DbSet<Home> Homes { get; set; }
         public DbSet<User> Users { get; set; }
 
+        static DataContext()
+        {
+            Database.SetInitializer<DataContext>(null);
+        }
         public static string ConnectionStringName
         {
             get
@@ -29,6 +33,41 @@ namespace CodedHomes.Data
                 return "DefaultConnection";
             }
         }
+        public DataContext()
+            : base(nameOrConnectionString: DataContext.ConnectionStringName) { }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        { 
+        }
+
+        private void ApplyRules()
+        {
+
+            foreach (var entry in this.ChangeTracker.Entries()
+                        .Where(
+                             e => e.Entity is IAuditInfo &&
+                            (e.State == EntityState.Added) ||
+                            (e.State == EntityState.Modified)))
+            {
+                IAuditInfo e = (IAuditInfo)entry.Entity;
+
+                if (entry.State == EntityState.Added)
+                {
+                    e.CreatedOn = DateTime.Now;
+                }
+
+                e.ModifiedOn = DateTime.Now;
+            }
+        }
+
+        public override int SaveChanges()
+        {
+            this.ApplyRules();
+
+            return base.SaveChanges();
+        }
+
+
 
 
 
