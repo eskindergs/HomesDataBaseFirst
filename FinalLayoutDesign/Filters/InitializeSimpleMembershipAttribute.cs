@@ -5,7 +5,6 @@ using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using FinalLayoutDesign.Models;
-u
 
 namespace FinalLayoutDesign.Filters
 {
