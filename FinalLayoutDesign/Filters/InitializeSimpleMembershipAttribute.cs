@@ -5,6 +5,7 @@ using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using FinalLayoutDesign.Models;
+u
 
 namespace FinalLayoutDesign.Filters
 {
@@ -38,7 +39,13 @@ namespace FinalLayoutDesign.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    //WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection(
+                       Config.ConnectionStringName,
+                       Config.UsersTableName,
+                       Config.UsersPrimaryKeyColumnName,
+                       Config.UsersUserNameColumnName,
+                       autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {
