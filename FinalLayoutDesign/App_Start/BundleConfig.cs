@@ -15,7 +15,7 @@ namespace FinalLayoutDesign
                        , "~/Scripts/lib/underscore.js"
                        , "~/Scripts/lib/H5F.js"
                        , "~/Scripts/app/homesDataService.js"
-                      //, "~/Scripts/app/_mixins.js"
+                       , "~/Scripts/app/_mixins.js"
                        //, "~/Scripts/app/validationUtility.js"
                        //, "~/Scripts/app/offlineUtility.js"
                       //, "~/Scripts/app/serializer.js"
