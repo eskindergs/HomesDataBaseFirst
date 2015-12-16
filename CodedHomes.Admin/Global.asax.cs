@@ -5,6 +5,10 @@ using System.Web.DynamicData;
 using System.Web.Routing;
 using System.Web.UI;
 
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+//using CodedHomes.Data;
+
 namespace CodedHomes.Admin
 {
     public class Global : System.Web.HttpApplication
@@ -29,11 +33,10 @@ namespace CodedHomes.Admin
             // Note: Make sure that you change "YourDataContextType" to the name of the data context
             // class in your application.
             // See http://go.microsoft.com/fwlink/?LinkId=257395 for more information on how to register Entity Data Model with Dynamic Data            
-            // DefaultModel.RegisterContext(() =>
-            // {
-            //    return ((IObjectContextAdapter)new YourDataContextType()).ObjectContext;
-            // }, new ContextConfiguration() { ScaffoldAllTables = false });
-
+            DefaultModel.RegisterContext(() =>
+            {
+                return ((IObjectContextAdapter)new CodedHomesDEVEntities()).ObjectContext;
+            }, new ContextConfiguration() { ScaffoldAllTables = true });
             // The following registration should be used if YourDataContextType does not derive from DbContext
             // DefaultModel.RegisterContext(typeof(YourDataContextType), new ContextConfiguration() { ScaffoldAllTables = false });
 
